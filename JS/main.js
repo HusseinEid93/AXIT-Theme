@@ -28,6 +28,8 @@ anchors.forEach(anchor => {
          scrollTop: targetOffsetTop
       }, 3000, function () {
          anchor.classList.add('active');
+         /* For touch screens */
+         window.click();
       });
    });
 })
@@ -43,8 +45,6 @@ window.addEventListener('scroll', () => {
    targetSections.forEach((section, index) => {
       if (inViewPort(section)) {
          anchors[index].classList.add('active');
-         /* For touch screens */
-         window.click();
       }
       else {
          anchors[index].classList.remove('active');
