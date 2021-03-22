@@ -42,11 +42,14 @@ const targetSections = document.querySelectorAll('.target');
 window.addEventListener('scroll', () => {
    targetSections.forEach((section, index) => {
       if (inViewPort(section)) {
-         anchors.forEach(anchor => anchor.classList.remove('active'));
          anchors[index].classList.add('active');
+         /* For touch screens */
+         window.click();
       }
       else {
          anchors[index].classList.remove('active');
       }
    });
 });
+
+
