@@ -1,0 +1,316 @@
+include mixins
+doctype html 
+html(lang="en")
+   head 
+      include headTag 
+   body 
+
+      // Start the landing page 
+      include landingPage
+
+      //- Include the scrollToTop button 
+      include scrollToTop
+
+      // Start the navbar 
+      //- Include the navbar
+      include navbar
+
+      // Start the .showcase section 
+      section(class="showcase")
+         .custom-container 
+            div(class="row mx-0 align-items-center")
+               .col-md-7.showcase-text.px-0
+                  .logo    
+                     img(
+                        src="../images/img1.png"
+                        class="img-fluid"
+                     )
+                  h1(class="text-uppercase position-relative mb-0").
+                     modern axure template for beautiful prototypes
+
+                  .separator
+
+                  p.mb-0.
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                     Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                     amet lacus accumsan et viverra justo commodo.
+                  button(class="py-2 px-5 text-white") Download 
+
+               .col-md-5.px-0.form 
+                  form.mx-auto
+                     header(class="text-center text-capitalize").
+                        Start your #[span.text-uppercase free] trial today
+                     main(class="pt-4 pb-5 bg-white")
+                        - const types = ["text", "email", "password"];
+                        - const placeholders = ["Name", "Email", "Password"];
+                        - for(let i = 0; i <= 2; i++)
+                           input(
+                              type=`${types[i]}`
+                              class="pb-1 pl-2 w-100"
+                              placeholder=`${placeholders[i]}`
+                           )
+
+                     input(
+                        type="submit"
+                        class="footer border-0 text-white w-100 text-capitalize text-center"
+                        value="Get Started"
+                        onclick="event.preventDefault()"
+                     )
+
+
+      // Start the .social-media section 
+      section(class="social-media bg-white py-3 position-relative")   
+         .custom-container    
+            .row.align-items-center.mx-0.px-0 
+               div(class="col-md-5 text-md-left text-center mb-4 mb-md-0")
+                  h5.font-weight-bold  Social Media
+                  p.text-secondary.m-0.
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                     Aenean euismod bibendum laoreet.
+
+               div(class="col-md-7 icons")
+                  +socialMedia 
+
+
+      // Start the .tabs section 
+      section(
+         class="tabs target position-relative"
+         id="features"
+      )
+         .custom-container 
+            .grid.row.align-items-center.mx-0.px-0
+               main.col-lg-8.mb-lg-0.mb-5
+                  .tabs
+                     -for(let i = 1; i <= 3; i++)
+                        div(
+                           class=`d-flex justify-content-center align-items-center py-3 py-sm-0 ${i == 1? "active": ""}`
+                        ) TAB #{i}
+
+
+                  .tabs-contents.position-relative 
+                     - const paragraphClasses = ["text-secondary", "m-0"];
+                     // Tab content 1
+                     .active
+                        h3.m-0.
+                           Tabs with soft transitioning effect.
+                        .separator
+                        p(class=paragraphClasses).
+                           Lorem ipsum dolor sit amet, consectetur adipiscing
+                           elit. Aenean euismod bibendum laoreet. Proin gravida
+                           dolor sit amet lacus accumsan et viverra justo
+                           commodo. Proin sodales pulvinar tempor. Cum sociis
+                           natoque penatibus et magnis dis parturient montes.
+                        p(class=paragraphClasses).
+                           Lorem ipsum dolor sit amet, consectetur adipiscing
+                           elit. Aenean euismod bibendum laoreet.
+                        a(
+                           href="#"
+                           class="text-decoration-none d-block text-white"
+                        )  Call to Action
+
+                     // Tab content 2
+                     .position-absolute   
+                        h3.m-0.
+                           Tab 2 Headline
+                        .separator
+                        p(class=paragraphClasses).
+                           Vide augue no quo. Ex gubergren necessitatibus eos,
+                           usu munere partem ei, ne dolores scaevola
+                           definitionem qui. Nec dolore nostro id. Ad ius
+                           scripta complectitur. Vel graeco lobortis conceptam
+                           ex. Ut justo eirmod alienum est, te pri quando
+                           quaerendum.
+                        p(class=paragraphClasses).
+                           Prima facilis omnesque sea cu, has brute timeam
+                           eligendi ex. Nec virtute eripuit legimus an. Cum
+                           cetero quaerendum in. Nam ea habeo dolorum accumsan,
+                           homero dissentiet est ea.
+
+
+                     // Tab content 3 
+                     .position-absolute   
+                        h3.m-0.
+                           Tab 3 Headline
+                        .separator
+                        p(class=paragraphClasses).
+                           Nec elit scaevola consetetur in, cu meliore deterruisset duo. Novum iusto disputationi cu mea, nec ad nonumy doctus consequat, fabulas similique pri te. Ei ius suas theophrastus, utinam ridens audire duo ea, no solet menandri nam. 
+                        p(class=paragraphClasses).
+                           Per at impetus diceret, detracto recteque persecuti eum ne, diceret facilisi consulatu has id. Cetero rationibus constituto ea quo, ex pri mutat propriae vituperatoribus. Eum ad feugiat democritum cotidieque. Legere praesent periculis ex pro. At per tantas reformidans, ex laoreet partiendo constituam eum, nam commune... 
+
+               div(class="col-lg-4 img")
+                  img(
+                     src="../images/img3.png"
+                     class="img-fluid d-block mx-auto"
+                  )
+         // Bottom SVG
+         +SVG("bottom", 1614383354)
+
+
+
+      // Start the .sub-list section 
+      section(class="sublist position-relative")
+         .custom-container.wrapper 
+            .img
+               img(
+                  src="../images/img4.png" 
+                  class="img-fluid"
+               )
+            .content 
+               h3.m-0 Sub list section
+               .separator.my-4
+               p.mb-5.text-secondary.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                  amet lacus accumsan et viverra justo commodo.
+               .upload-download  
+                  - const upDown = ["upload", "download"];
+                  - const texts = ["Lorem ipsum dolor sit amet, consectetur adipiscingelit. Aenean euismod bibendum laoreet.", "Lorem ipsum dolor sit amet, consectetur adipiscingelit. Aenean euismod bibendum laoreet. Proingravida dolor sit amet lacus accumsan et viverrajusto commodo."];
+                  - for(let i = 0; i < upDown.length; i++)
+                     div(class=`${i == 0 ? "mb-2": ""} ${upDown[i]}`)
+                        div(class="icon rounded-circle position-relative")
+                           i(class=`fas fa-cloud-${upDown[i]}-alt position-absolute`)
+                        .text 
+                           h6.title.mb-2 Title
+                           p.text-secondary.
+                              #{texts[i]}
+         // Bottom SVG 
+         +SVG("bottom", 1614383700)
+
+
+
+      // Start the .standard-picture-section section 
+      section(class="standard-picture-section")
+         .custom-container.wrapper 
+            .content 
+               h3.m-0 Standard Picture Section
+               .separator.my-4
+               p.mb-4.text-secondary.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                  amet lacus accumsan et viverra justo commodo.
+               p.text-secondary.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aenean euismod bibendum laoreet.
+            .img
+               img(
+                  src="../images/img5.png" 
+                  class="img-fluid"
+               )
+
+
+      // Start the .why-is-this-awesome section 
+      section(
+         class="why-is-this-awesome position-relative target" 
+         id="about"
+      )
+         +SVG("top", 1614384162)
+         .custom-container 
+            +header("Why is this awesome", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+            main 
+               - const titles = ["Thoughtful Design", "Well Crafted", "Easy to Customize"];
+               - const fontAwesomeIcons = ["lightbulb", "keyboard", "bolt"];
+               - for(let i = 0; i < 3; i++)
+                  .item.text-center
+                     div(class="icon rounded-circle position-relative")
+                        i(class=`position-absolute ${i === 2 ? "fas": "far"} fa-${fontAwesomeIcons[i]}`)
+                     h3.mb-0 #{titles[i]}
+                     p.text-secondary.m-0.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                        amet lacus accumsan et viverra.
+
+      
+      // Start the .pricing-options section 
+      section(
+         class="pricing-options position-relative target" id="pricing"
+      )
+         +SVG("top", 1614384264)
+         .custom-container 
+            +header("pricing options", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+            main 
+               // First list
+               +pricingCard("Basic", 0, "Free for Life", ["1 gb of space", "10 gb of bandwidth", "3 websites", "basic customization", "wordpress integration", "email support"])
+               
+               // Second list
+               +pricingCard("Professional", 19, "Monthly Payment", ["5 gb of space", "50 gb of bandwidth", "12 websites", "advanced customization", "wordpress integration", "email support"])
+
+               // Third list 
+               +pricingCard("Enterprise", 70, "Monthly Payment", ["unlimited space", "unlimited bandwidth", "100 websites", "advanced customization", "wordpress integration", "24/7 customer support"])
+
+
+
+      // Start the .testimonials section 
+      section(
+         class="testimonials position-relative target" id="reviews"
+      )
+         +SVG("top", 1614384729)
+         .custom-container 
+            +header("what our customers are saying", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+            main 
+               // First customer 
+               +customer("Jeremy H.", "Manager", 7)
+               // Second customer 
+               +customer("John S.", "Freelancer", 8)
+               // Third customer
+               +customer("Susan W.", "Photographer", 9)
+
+
+
+      // Start .stylish-exure-design
+      section.stylish-exure-design
+         .custom-container 
+            +header("stylish axure design", "Use the sections you need, remove the ones you don't. Create gorgeous prototypes faster than ever!")
+            button(class="py-2 px-5 text-white d-block mx-auto") Download 
+
+
+      
+      // Start the .contact-us section 
+      section(class="contact-us target" id="contact")
+         .custom-container 
+            +header("contact us", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+            form(
+               class="mt-5" 
+               onsubmit="event.preventDefault()"
+            )
+               .form-container 
+                  .name-email-subject
+                     - const inputPlaceholders = ["Name", "Email", "Subject"]; 
+                     - for(let i = 0; i < 3; i++)
+                        input(
+                           type=`${i === 1 ? "email": "text"}`
+                           placeholder=`${inputPlaceholders[i]}`
+                           class="w-100 py-1 px-2"
+                           required
+                        )
+                  .message
+                     textarea(
+                        rows="5"
+                        class="w-100 h-100 pl-2 pr-3 py-1"
+                        placeholder="Message"
+                     )  
+
+               input(
+                  type="submit"
+                  value="Send Message"
+                  class="d-block mx-auto mt-5 text-white border-0"
+               )      
+
+
+
+      // Start the footer 
+      footer.text-white.position-relative.text-center
+         +SVG("top", 1614384976)
+         .custom-container 
+            .icons.mx-auto
+               +socialMedia
+            .small.text-center.mt-3.
+               &copy; 2016
+               #[a(href="#") Axure Themes]
+
+
+
+      script(src="../JS/navbar.js")
+      script(src="../JS/landingPage.js") 
+      script(src="../JS/jquery-3.5.1.min.js")
+      script(src="../JS/scrollToTop.js")
+      script(src="../JS/main.js" type="module")

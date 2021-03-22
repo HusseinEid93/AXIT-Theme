@@ -1,0 +1,591 @@
+@import "variables", "mixins", "utilities";
+
+* {
+   box-sizing: border-box;
+}
+html {
+   @include FireFox-scrollbar;
+}
+
+/* Add some styles to the scrollbar in Chrome. */
+::-webkit-scrollbar {
+   @include Chrome-scrollbar;
+}
+
+body {
+   font-family: $open-sans-font;
+}
+
+// Import the style of the landing page
+@import "landingPage";
+
+// Import the style of the scrollToTop button
+@import "scrollToTop";
+
+// Import the navbar
+@import "navbar";
+
+/* Start the .showcase section */
+.showcase {
+   color: $white;
+   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("../images/img2.jpg");
+   background-position: center;
+   background-size: cover;
+   background-attachment: fixed;
+   padding: 7rem 0;
+   @media (max-width: 575px) {
+      background-attachment: scroll;
+      padding: 5rem 0;
+   }
+   &-text {
+      @include d-grid(1fr, 2rem);
+      h1 {
+         @include font(calc(2.6vw + 1px), 400, $Raleway-font);
+         line-height: 1.5;
+         @media (max-width: 991px) {
+            font-size: calc(2.5vw + 1px);
+         }
+         @media (max-width: 767px) {
+            font-size: 1.5rem;
+         }
+         @media (max-width: 575px) {
+            font-size: 1.4rem;
+         }
+      }
+      .separator {
+         @include separator(15%, 2px, $white);
+      }
+      p {
+         @include font(null, 300, $Raleway-font);
+         color: lighten($medium-gray, 17);
+         max-width: 80%;
+         @media (max-width: 991px) {
+            font-size: 0.9rem;
+         }
+         @media (max-width: 767px) {
+            font-size: 1rem;
+         }
+         @media (max-width: 575px) {
+            max-width: 90%;
+         }
+      }
+      button {
+         @include btn-white;
+         justify-self: start;
+      }
+   }
+
+   .form {
+      @media (max-width: 767px) {
+         margin-top: 5rem;
+      }
+      form {
+         max-width: 360px;
+         @media (max-width: 575px) {
+            max-width: 320px;
+         }
+      }
+      header {
+         padding: 0.75rem 1rem;
+         background-color: $light-gray;
+         color: $black;
+         @include font(20px, 700);
+         @media (max-width: 991px) {
+            font-size: 15px;
+         }
+         span {
+            color: $orangish;
+         }
+      }
+
+      main {
+         @include d-grid(1fr, 2rem);
+         padding-left: 2rem;
+         padding-right: 2rem;
+         @media (max-width: 991px) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+         }
+         @media (max-width: 767px) {
+            background-color: rgba(255, 255, 255, 0.6) !important;
+         }
+         > input {
+            @include input(true, $dark-gray);
+            @media (max-width: 991px) {
+               font-size: 0.9rem;
+            }
+            @media (max-width: 767px) {
+               background-color: transparent;
+               border-bottom-color: $dark-gray;
+            }
+         }
+      }
+
+      input[type="submit"] {
+         @include btn-orangish(0.85rem 1rem, 15px, 600);
+      }
+   }
+}
+/* End the .showcase section */
+
+/* Start the .social-media section */
+.social-media {
+   z-index: 2;
+   box-shadow: 0 1px 1px $semi-dark-gray;
+   h5 {
+      color: $dark-gray;
+   }
+   p {
+      font-size: 0.85rem;
+      @media (max-width: 991px) {
+         font-size: 0.8rem;
+      }
+      @media (max-width: 767px) {
+         font-size: 0.9rem;
+      }
+   }
+
+   .icons {
+      @include d-grid(repeat(7, 1fr), 1.5rem, center);
+      @media (max-width: 575px) {
+         gap: 1rem;
+      }
+      a {
+         color: #ccc;
+         font-size: 48px;
+         cursor: pointer;
+         transition: color 0.3s ease-in;
+         @media (max-width: 991px) {
+            font-size: 40px;
+         }
+         @media (max-width: 575px) {
+            font-size: 30px;
+         }
+         &:hover {
+            color: $semi-dark-gray;
+         }
+      }
+   }
+}
+/* End the .social-media section  */
+
+/* Start the .tabs section */
+section.tabs {
+   padding: 8rem 0;
+   @media (max-width: 767px) {
+      padding: 5rem 0;
+   }
+   @media (max-width: 575px) {
+      padding: 3rem 0;
+   }
+   background-color: $light-gray;
+   .grid {
+      main {
+         @include d-grid(100px 1fr, 6rem, null, center);
+         @media (max-width: 1199px) {
+            gap: 5rem;
+         }
+         @media (max-width: 767px) {
+            gap: 2.5rem;
+         }
+         @media (max-width: 575px) {
+            grid-template-columns: 1fr;
+            padding: 0;
+         }
+         .tabs {
+            @media (max-width: 575px) {
+               @include d-grid(repeat(3, 1fr), 1px);
+            }
+            > * {
+               @media (min-width: 576px) {
+                  height: 100px;
+               }
+               @media (max-width: 575px) {
+                  font-size: 0.8rem;
+               }
+               background-color: black;
+               color: $white;
+               @include font(15px, 700);
+               border-bottom: 1px solid $light-gray;
+               cursor: pointer;
+               transition: background-color 0.3s ease-in;
+               &:hover {
+                  background-color: $dark-gray;
+               }
+               &.active {
+                  background-color: $orangish;
+               }
+            }
+         }
+
+         .tabs-contents > * {
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            &.active {
+               opacity: 1;
+            }
+            @include d-grid(1fr, 1.5rem);
+            h3 {
+               @include font(20px, 700);
+               @media (max-width: 575px) {
+                  font-size: 17px;
+               }
+            }
+            .separator {
+               @include separator(20%, 2px, $orangish);
+            }
+            p {
+               font-size: 14px;
+               @media (max-width: 1199px) {
+                  font-size: 0.85rem;
+               }
+            }
+            a {
+               @include btn-orangish(0.7rem 1.5rem, 15px, 700, 2px);
+               justify-self: start;
+            }
+         }
+      }
+   }
+
+   /* SVG */
+   @include SVG(
+      bottom,
+      1614383354,
+      129%,
+      32px,
+      $white,
+      rotate(180deg),
+      rotateY(180deg)
+   );
+}
+/* End the .tabs section */
+
+/* Start the .sublist section */
+.sublist {
+   @include sublist-picture-sections(1.5fr 1fr, 7rem 0);
+   /* SVG */
+   @include SVG(
+      bottom,
+      1614383700,
+      108%,
+      46px,
+      $light-gray,
+      rotate(180deg),
+      rotateY(180deg)
+   );
+}
+/* End the .sublist section */
+
+/* Start the .standard-picture-section section */
+.standard-picture-section {
+   background-color: $light-gray;
+   @include sublist-picture-sections(1fr 1fr, 4rem 0);
+}
+/* End the .standard-picture-section section */
+
+// To be inherited below
+%common-style {
+   padding: 6rem 0;
+   @media (max-width: 767px) {
+      padding: 3rem 0;
+   }
+   header {
+      @include header;
+   }
+   main {
+      margin-top: 5rem;
+      @media (max-width: 767px) {
+         margin-top: 3rem;
+      }
+   }
+}
+
+/* Start the .why-is-this-awesome */
+.why-is-this-awesome {
+   @extend %common-style;
+   // SVG
+   @include SVG(
+      top,
+      1614384162,
+      108%,
+      46px,
+      $light-gray,
+      null,
+      rotateY(180deg)
+   );
+   main {
+      @include d-grid(repeat(3, 1fr), 2rem);
+      @media (max-width: 991px) {
+         gap: 1.5rem;
+      }
+      @media (max-width: 767px) {
+         @include d-grid(1fr, 3rem);
+      }
+      .item {
+         @include d-grid(1fr, 1.5rem, center);
+      }
+      .icon {
+         width: 70px;
+         height: 70px;
+         border: 2px solid $orangish;
+         i {
+            font-size: 28px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $orangish;
+         }
+      }
+      h3 {
+         @include font(20px, 700);
+      }
+      p {
+         font-size: 14px;
+         @media (max-width: 1199px) {
+            font-size: 0.85rem;
+         }
+         @media (min-width: 768px) and (max-width: 991px) {
+            font-size: 0.8rem;
+         }
+      }
+   }
+}
+/* End the .why-is-this-awesome */
+
+/* Start the .pricing-options section */
+.pricing-options {
+   @extend %common-style;
+   // padding: 6rem 0;
+   background-color: $light-gray;
+   // Top SVG
+   @include SVG(top, 1614384264, 108%, 35px, $white);
+   main {
+      @include d-grid(repeat(3, 1fr), 2.5rem, null, end);
+      @media (max-width: 991px) {
+         gap: 1.5rem;
+      }
+      @media (max-width: 767px) {
+         @include d-grid(1fr, 2rem);
+      }
+      .list {
+         @media (max-width: 767px) {
+            width: 50%;
+         }
+         @media (max-width: 575px) {
+            width: 70%;
+         }
+      }
+      .header {
+         background-color: $dark-gray;
+         border-bottom: 5px solid $orangish;
+         h3 {
+            @include font(20px, 700);
+            border-bottom: 1px solid darken($semi-dark-gray, 15);
+         }
+         .price span {
+            &:first-child {
+               @include font(30px, 800, $Raleway-font);
+            }
+            &:last-child {
+               @include font(70px, 800, $Raleway-font);
+            }
+         }
+         .description {
+            @include font(14px, 600);
+            color: rgba(255, 255, 255, 0.5);
+         }
+         .footer {
+            background-color: $orangish;
+            @include font(14px, 700);
+         }
+      }
+
+      .body {
+         box-shadow: 0 1px 2px $medium-gray;
+         p {
+            @include font(14px, 400);
+            &:not(:last-of-type) {
+               border-bottom: 1px solid lighten($medium-gray, 15);
+            }
+            @media (max-width: 991px) {
+               font-size: 0.75rem;
+            }
+            @media (max-width: 767px) {
+               padding: 0.7rem 0 !important;
+            }
+         }
+      }
+   }
+}
+/* End the .pricing-options section */
+
+/* Start the .testimonials section */
+.testimonials {
+   // SVG
+   @include SVG(top, 1614384729, 108%, 27px, $light-gray);
+   @extend %common-style;
+   header h2 {
+      @media (max-width: 575px) {
+         line-height: 1.4;
+      }
+   }
+   main {
+      @include d-grid(1fr 1fr 1fr, 2rem, center);
+      @media (max-width: 991px) {
+         gap: 1.5rem;
+      }
+      @media (max-width: 767px) {
+         grid-template-columns: 1fr;
+         gap: 2.5rem;
+      }
+   }
+   .customer {
+      max-width: 75%;
+      @media (max-width: 1199px) {
+         max-width: 85%;
+      }
+      @media (max-width: 991px) {
+         max-width: 100%;
+      }
+      @media (max-width: 767px) {
+         max-width: 50%;
+      }
+      @media (max-width: 575px) {
+         max-width: 90%;
+      }
+   }
+   .quote {
+      @include font(14px, 400);
+      background-color: $light-gray;
+      img {
+         left: 25px;
+         bottom: -15px;
+      }
+      @media (max-width: 991px) {
+         font-size: 0.85rem;
+      }
+   }
+   .sayer {
+      @include d-grid(auto 1fr, 1rem, null, center);
+      .name-position {
+         h3 {
+            @include font(20px, 700);
+            @media (max-width: 991px) {
+               font-size: 18px;
+            }
+         }
+         .position {
+            color: lighten($semi-dark-gray, 10);
+            font-size: 14px;
+         }
+      }
+   }
+}
+/* End the .testimonials section */
+
+/* Start the .stylish-exure-design section */
+.stylish-exure-design {
+   padding: 3.5rem 0;
+   @media (max-width: 991px) {
+      padding: 2.5rem 0;
+   }
+   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url(../images/img10.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   header {
+      margin-bottom: 2.5rem;
+      @include header;
+      h2 {
+         color: $white;
+         letter-spacing: 2px;
+         @media (max-width: 991px) {
+            font-size: 32px;
+         }
+      }
+      .separator {
+         background-color: $white;
+      }
+      p {
+         color: rgba(255, 255, 255, 0.8) !important;
+         @include font(1rem, 300, $Raleway-font);
+      }
+   }
+   button {
+      @include btn-white;
+   }
+}
+/* End the .stylish-exure-design section */
+
+/* Start the .contact-us section */
+.contact-us {
+   @extend %common-style;
+   .form-container {
+      @include d-grid(1fr 1fr, 5rem);
+      @media (max-width: 991px) {
+         gap: 3rem;
+      }
+      @media (max-width: 767px) {
+         gap: 2rem;
+      }
+      @media (max-width: 575px) {
+         grid-template-columns: 1fr;
+      }
+      input,
+      textarea {
+         font-size: 14px;
+         @include input(false);
+         &:not(:last-of-type) {
+            margin-bottom: 2.5rem;
+         }
+      }
+      textarea {
+         resize: none;
+         @include FireFox-scrollbar;
+      }
+   }
+   input[type="submit"] {
+      @include btn-orangish(0.7rem 1.5rem, 15px, 700, 2px);
+   }
+}
+/* End the .contact-us section */
+
+/* Start the footer */
+footer {
+   // SVG
+   $main-color: rgba(255, 255, 255, 0.5);
+   @include SVG(top, 1614384976, 108%, 25px, $white);
+   padding: 1.75rem 0;
+   background-color: $black;
+   .icons {
+      @include d-grid(repeat(7, 1fr), 0.75rem);
+      width: max-content;
+      a {
+         font-size: 24px;
+         color: $main-color;
+         cursor: pointer;
+         transition: color 0.3s ease;
+         &:hover {
+            color: $white;
+         }
+      }
+   }
+   .small {
+      font-size: 12px;
+      color: $main-color;
+      a {
+         color: inherit;
+         text-decoration: none;
+         transition: all 0.3s ease;
+         &:hover {
+            color: $white;
+            text-decoration: underline $white;
+         }
+      }
+   }
+}

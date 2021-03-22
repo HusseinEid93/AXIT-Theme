@@ -1,0 +1,67 @@
+//- This mixin generates SVG
+mixin SVG(topOrBottom, serial, d = "M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z")
+   div(class=`custom-shape-divider-${topOrBottom}-${serial}`)
+      svg(
+         data-name="Layer 1"
+         xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 1200 120"
+         preserveAspectRatio="none"   
+      )
+         path(d=d class="shape-fill")
+
+
+//- This mixin generates the header for some sections 
+mixin header(heading, paragraph)
+   header.text-center
+      h2.text-uppercase.m-0 #{heading}
+      .separator.mx-auto
+      p.m-0.text-secondary.
+         #{paragraph}
+
+
+//- This mixin generates a pricing card 
+mixin pricingCard(type, price, description, features)
+   div(class="list mx-auto mx-md-0")
+      div(class=`header text-center text-white ${type === "Professional" ? "border-0" : ""}`)
+         h3.py-3.m-0 #{type}
+         .price 
+            span $
+            span #{price}
+         div(class="description font-italic pb-4").
+            #{description}
+         if type === "Professional"
+            div(class="footer py-2 text-uppercase").
+               our most popular
+      div(class="body bg-white text-center text-secondary text-uppercase")
+         - for(let i = 0; i < features.length; i++)
+            p.m-0.py-2 #{features[i]}
+
+
+
+//- This mixin generates a customer for the .testimonials section 
+mixin customer(name, position, imgNumber)
+   .customer
+      p(class="quote p-3 mb-4 font-italic text-secondary position-relative").
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+         Doloribus accusamus expedita repellat similique odio
+         aspernatur ex, architecto eaque quo suscipit.
+         #[img(src="../images/img6.png" class="img-fluid position-absolute") ]
+      .sayer 
+         img(
+            src=`../images/img${imgNumber}.png`
+            class="img-fluid"
+         )
+         .name-position    
+            h3.mb-0 #{name}
+            span.position #{position}
+
+
+
+//- This mixin generates the list of social-media icons
+mixin socialMedia 
+   - const icons = ["fa-facebook-f", "fa-twitter", "fa-google-plus-g", "fa-pinterest-square", "fa-instagram", "fa-stumbleupon", "fa-rss"];
+   - for(let i = 0; i < icons.length; i++)
+      a(
+         href="#"
+         class=`${i < icons.length - 1 ? "fab": "fas"} ${icons[i]} text-decoration-none`
+      ) 

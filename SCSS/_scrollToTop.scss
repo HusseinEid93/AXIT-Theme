@@ -1,0 +1,30 @@
+.scrollToTop {
+   bottom: 20px;
+   right: 5px;
+   width: 35px;
+   height: 35px;
+   transform: scale(0);
+   background-color: $orangish;
+   transition: all 0.25s ease-in-out;
+   z-index: 1000;
+   pointer-events: none;
+   &.active {
+      transform: scale(1);
+      cursor: pointer;
+      pointer-events: all;
+   }
+   i {
+      font-size: 1.3rem;
+      color: $white;
+      animation: up_down 1s ease-in-out infinite alternate;
+   }
+}
+
+@keyframes up_down {
+   0% {
+      transform: translateY(-30%);
+   }
+   100% {
+      transform: translateY(0);
+   }
+}

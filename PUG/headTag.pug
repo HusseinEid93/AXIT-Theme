@@ -1,0 +1,32 @@
+meta(charset="UTF-8")
+meta(
+   http-equiv="X-UA-Compatible"
+   content="IE=edge"
+)
+meta(
+   name="viewport"
+   content="width=device-width, initial-scale=1.0"
+)
+
+// Font awesome 
+script(
+   src="https://kit.fontawesome.com/ 54688c9bf4.js"
+   crossorigin="anonymous"
+)
+- const href = ["https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css", "https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css", "https://kit-free.fontawesome.com/releases/latest/css/free.min.css"];
+
+- for(let i = 0; i < href.length; i++)
+   link(rel="stylesheet", href=`${href[i]}` media="all")
+
+// Bootstrap.min.css 
+link(rel="stylesheet", href="../css/bootstrap.css")
+// style.css 
+link(rel="stylesheet", href="../css/style.css")
+
+// Shortcut 
+link(
+   rel="shortcut icon" 
+   type="image/png" 
+   href="../images/icon.png"
+)
+title AXIT Theme 

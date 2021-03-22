@@ -1,0 +1,91 @@
+.navigation {
+   top: 0;
+   z-index: 500;
+   height: 72px;
+   background-color: $black;
+   border-bottom: 1px solid #979797;
+   .brand {
+      max-width: 80px;
+   }
+   .nav-list {
+      &.burger-active {
+         left: 0;
+      }
+      @media (max-width: 767px) {
+         position: fixed;
+         z-index: 1000;
+         top: 72px;
+         left: -100%;
+         width: 50%;
+         height: 100vh;
+         background-color: $black;
+         transition: left 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+      .close-btn {
+         right: 1rem;
+         top: 1rem;
+         cursor: pointer;
+      }
+      ul {
+         @include d-grid(repeat(5, 1fr), 2rem, center);
+         @media (max-width: 991px) {
+            gap: 1rem;
+         }
+         @media (max-width: 767px) {
+            grid-template-columns: 1fr;
+            justify-items: start;
+         }
+         a {
+            color: $medium-gray;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            @include after-pseudo-element(
+               0%,
+               2px,
+               $orangish,
+               0,
+               0.25rem,
+               width 0.3s ease-in
+            );
+            &:hover {
+               color: $white;
+               &::after {
+                  width: 100%;
+               }
+            }
+            &.active {
+               color: $white;
+               @include after-pseudo-element(
+                  100%,
+                  2px,
+                  $orangish,
+                  0,
+                  0.25rem,
+                  width 0.3s ease
+               );
+            }
+         }
+      }
+   }
+
+   .toggle {
+      @include d-grid(1fr, 0.25rem);
+      cursor: pointer;
+      &.active > div {
+         &:first-child {
+            transform: rotate(45deg) translate(5px, 6px);
+         }
+         &:nth-child(2) {
+            opacity: 0;
+         }
+         &:last-child {
+            transform: rotate(-45deg) translate(2px, -4px);
+         }
+      }
+      > div {
+         width: 20px;
+         height: 2px;
+         transition: all 0.5s;
+      }
+   }
+}

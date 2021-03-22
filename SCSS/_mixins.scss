@@ -1,0 +1,230 @@
+@mixin d-grid(
+   $grid-template-columns: 1fr,
+   $gap: 0,
+   $justify-items: null,
+   $align-items: null,
+   $justify-content: null,
+   $align-content: null
+) {
+   display: grid;
+   grid-template-columns: $grid-template-columns;
+   gap: $gap;
+   justify-content: $justify-content;
+   align-content: $align-content;
+   justify-items: $justify-items;
+   align-items: $align-items;
+}
+
+@mixin btn-white {
+   background-color: transparent;
+   border: 2px solid $white;
+   font-weight: 600;
+   transition: all 0.3s ease-in;
+   &:hover {
+      background-color: $white;
+      color: $black !important;
+   }
+}
+
+@mixin btn-orangish($padding, $font-size, $font-weight, $border-radius: null) {
+   @include font($font-size, $font-weight);
+   background-color: $orangish;
+   padding: $padding;
+   transition: background-color 0.3s ease;
+   border-radius: $border-radius;
+   &:hover {
+      background-color: $light-orangish;
+   }
+}
+
+@mixin font($size: null, $weight: null, $family: $open-sans-font) {
+   font-size: $size;
+   font-weight: $weight;
+   font-family: $family;
+}
+
+@mixin after-pseudo-element(
+   $width,
+   $height,
+   $bg-color,
+   $left: 0,
+   $margin-top: null,
+   $transition: null
+) {
+   &::after {
+      position: absolute;
+      left: 0;
+      display: block;
+      content: "";
+      width: $width;
+      height: $height;
+      background-color: $bg-color;
+      margin-top: $margin-top;
+      transition: $transition;
+   }
+}
+
+@mixin sublist-picture-sections($grid-template-columns, $padding) {
+   padding: $padding;
+   @media (max-width: 767px) {
+      padding: 3rem 0;
+   }
+   .wrapper {
+      @include d-grid($grid-template-columns, 3rem, null, center);
+      @media (max-width: 1199px) {
+         grid-template-columns: 1fr 1fr;
+         gap: 2rem;
+      }
+      @media (max-width: 991px) {
+         grid-template-columns: 1fr;
+         justify-items: center;
+      }
+      @media (max-width: 575px) {
+         gap: 1rem;
+      }
+   }
+
+   .content {
+      @media (max-width: 991px) {
+         grid-row-start: 1;
+      }
+      h3 {
+         @include font(20px, 700);
+      }
+
+      .separator {
+         width: 15%;
+         height: 2px;
+         background-color: $orangish;
+      }
+
+      p {
+         @include font(14px, 400);
+         max-width: 90%;
+         @media (max-width: 1199px) {
+            font-size: 0.85rem;
+         }
+      }
+
+      .upload-download > * {
+         @include d-grid(auto 1fr, 1.5rem);
+         .icon {
+            width: 40px;
+            height: 40px;
+            border: 2px solid $orangish;
+            i {
+               font-size: 14px;
+               color: $orangish;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+            }
+         }
+
+         h6 {
+            color: #212121;
+            font-weight: 600;
+         }
+      }
+   }
+}
+
+@mixin FireFox-scrollbar {
+   scrollbar-width: thin;
+   scrollbar-color: $orangish transparent;
+}
+
+@mixin Chrome-scrollbar {
+   width: 8px;
+   &-track {
+      background-color: transparent;
+   }
+   &-thumb {
+      background: $orangish;
+      &:hover {
+         background-color: darken($orangish, 12);
+      }
+   }
+}
+
+@mixin input(
+   $border-bottom-color,
+   $placeholder-color: darken($medium-gray, 20)
+) {
+   font-family: $Raleway-font;
+   border: none;
+   border: 2px solid transparent;
+   border-bottom-color: darken($light-gray, 15);
+   transition: all 0.5s;
+   &::placeholder {
+      color: $placeholder-color;
+      font-weight: bold;
+   }
+   &:focus {
+      @if ($border-bottom-color) {
+         border-bottom-color: darken($orangish, 15);
+      } @else {
+         border-color: darken($orangish, 15);
+         border-radius: 4px;
+      }
+   }
+}
+
+@mixin SVG(
+   $top-or-bottom,
+   $serial,
+   $svg-width,
+   $svg-height,
+   $fill,
+   $transform: null,
+   $svg-transform: null
+) {
+   .custom-shape-divider-#{$top-or-bottom}-#{$serial} {
+      position: absolute;
+      left: 0;
+      #{$top-or-bottom}: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: $transform;
+      svg {
+         position: relative;
+         display: block;
+         width: calc(#{$svg-width} + 1.3px);
+         height: $svg-height;
+         transform: $svg-transform;
+      }
+      .shape-fill {
+         fill: $fill;
+      }
+   }
+}
+
+@mixin separator($width, $height, $bg-color) {
+   width: $width;
+   height: $height;
+   background-color: $bg-color;
+}
+
+@mixin header {
+   @include d-grid(1fr, 1.5rem);
+   h2 {
+      @include font(36px, 400px, $Raleway-font);
+      color: #212121;
+      @media (max-width: 767px) {
+         font-size: 22px !important;
+      }
+   }
+   .separator {
+      height: 2px;
+      width: 8%;
+      background-color: $orangish;
+      @media (max-width: 575px) {
+         width: 15%;
+      }
+   }
+   p {
+      @include font(14px, 400);
+      color: #86878b;
+   }
+}
