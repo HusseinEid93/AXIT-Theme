@@ -21,15 +21,14 @@ tabs.forEach((tab, index) => {
 const anchors = document.querySelectorAll('nav ul li a');
 
 anchors.forEach(anchor => {
-   anchor.addEventListener('click', function () {
+   anchor.addEventListener('click', function (e) {
+      e.preventDefault();
       let hash = this.hash;
       let targetOffsetTop = document.querySelector(hash).offsetTop - navbar.offsetHeight + 1;
       $('body, html').animate({
          scrollTop: targetOffsetTop
       }, 3000, function () {
          anchor.classList.add('active');
-         /* For touch screens */
-         window.click();
       });
    });
 })
@@ -44,6 +43,7 @@ const targetSections = document.querySelectorAll('.target');
 window.addEventListener('scroll', () => {
    targetSections.forEach((section, index) => {
       if (inViewPort(section)) {
+         anchors.forEach(anchor => anchor.classList.remove('active'));
          anchors[index].classList.add('active');
       }
       else {
@@ -51,5 +51,4 @@ window.addEventListener('scroll', () => {
       }
    });
 });
-
 

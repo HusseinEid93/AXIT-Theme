@@ -9,7 +9,8 @@
 
 button,
 input,
-textarea {
+textarea,
+a {
    &:focus {
       outline: none;
    }

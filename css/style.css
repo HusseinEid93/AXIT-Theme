@@ -22,7 +22,8 @@
 
 button:focus,
 input:focus,
-textarea:focus {
+textarea:focus,
+a:focus {
   outline: none;
 }
 
